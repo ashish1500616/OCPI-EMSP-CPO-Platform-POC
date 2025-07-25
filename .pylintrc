@@ -1,0 +1,20 @@
+[MASTER]
+# Specify a score threshold to be reached before exit.
+fail-under=8.0
+
+[MESSAGES CONTROL]
+# Disable the message, report, category or checker with the given id(s).
+# E.g. C0301,R0902
+disable=
+    C0114, # Missing module docstring
+    C0115, # Missing class docstring
+    C0116, # Missing function docstring
+    R0903, # Too few public methods
+    W0613, # Unused argument
+    R0913, # Too many arguments in function or method
+    R0914, # Too many local variables
+    W0511, # TODO comment
+    C0301, # Line too long (handled by black)
+    C0303, # Trailing whitespace (handled by pre-commit hook)
+    C0411, # Standard import should be in a separate section
+    C0413, # Import "X" should be placed at the top of the module
