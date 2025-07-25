@@ -1,0 +1,43 @@
+# Python-specific files
+__pycache__/
+*.pyc
+*.pyo
+.Python/
+
+# Virtual environment directories
+venv/
+env/
+.venv/
+pipenv/
+
+# IDE/editor files
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Test artifacts
+tests/reports/
+*.coverage
+htmlcov/
+.pytest_cache/
+
+# Log files
+*.log
+ocpi_demo.log
+
+# Temporary files
+run_mock_cpo.py
+temp_files/
+
+# Environment configuration
+.env
+.env.local
+
+# Distribution/build files
+dist/
+build/
+*.egg-info/
+testing/tests/reports/coverage.xml
+testing/tests/reports/junit.xml
+testing/tests/reports/report.html
