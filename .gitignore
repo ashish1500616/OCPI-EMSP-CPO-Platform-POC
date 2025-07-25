@@ -41,3 +41,9 @@ build/
 testing/tests/reports/coverage.xml
 testing/tests/reports/junit.xml
 testing/tests/reports/report.html
+
+# Pre-commit and quality tool artifacts
+.mypy_cache/
+.pylint_cache/
+.pre-commit-hooks.yaml
+.pre-commit-ci.yaml
