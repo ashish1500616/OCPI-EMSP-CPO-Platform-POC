@@ -1,0 +1,5 @@
+fastapi
+uvicorn
+py-ocpi
+pydantic-settings
+python-dotenv
