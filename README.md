@@ -22,6 +22,16 @@ This repository is primarily an **educational and development project** designed
 *   **Educational vs. Production**: This demo is structured to be easily understandable and modifiable for educational purposes. Production-grade implementations would require more robust error handling, security measures, scalability considerations, and persistent data storage.
 
 ---
+## 🏗️ Architecture Documentation
+
+A comprehensive set of diagrams detailing the system architecture, workflows, and data models is available in the [Architecture Documentation](documentation/architecture.md).
+
+This documentation includes:
+- System Context, Component, and Deployment Diagrams
+- Sequence Diagrams for all major OCPI workflows
+- Activity Diagrams for business processes
+- Entity Relationship and State Transition Diagrams
+---
 
 ## 🚀 Main Project Features
 
