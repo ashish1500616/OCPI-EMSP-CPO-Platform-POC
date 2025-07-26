@@ -7,6 +7,22 @@ library and FastAPI, combined with an educational platform for learning OCPI
 compliance, supports all required EMSP modules, and offers interactive
 demonstrations and a robust testing framework.
 
+---
+
+### ⚠️ Disclaimer: Work in Progress ⚠️
+
+This repository is primarily an **educational and development project** designed to demonstrate OCPI (Open Charge Point Interface) concepts and provide a functional EMSP backend for learning and testing purposes.
+
+**Please be aware of the following:**
+
+*   **Development Status**: This project is actively under development. You may encounter bugs, incomplete features, or unexpected behavior when starting services or running components.
+*   **Primary Purpose**: Its main goal is to serve as a practical example and a robust testing ground for OCPI 2.2.1, not as a production-ready solution out-of-the-box.
+*   **Stability & Completeness**: While efforts are made to ensure stability, certain features might be experimental or subject to change. It is not intended for critical production environments without significant further development and hardening.
+*   **Reporting Issues**: If you encounter any issues or have suggestions, please open an issue on the GitHub repository. Your feedback is valuable!
+*   **Educational vs. Production**: This demo is structured to be easily understandable and modifiable for educational purposes. Production-grade implementations would require more robust error handling, security measures, scalability considerations, and persistent data storage.
+
+---
+
 ## 🚀 Main Project Features
 
 - **OCPI 2.2.1 Compliant**: Full implementation of OCPI protocol version 2.2.1
