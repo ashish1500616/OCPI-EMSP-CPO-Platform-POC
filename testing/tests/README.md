@@ -1,6 +1,8 @@
 # OCPI EMSP Backend Testing Framework
 
-A comprehensive testing framework for the OCPI-compliant EMSP (E-Mobility Service Provider) backend, designed to simulate and validate bidirectional interactions with CPO (Charge Point Operator) systems.
+A comprehensive testing framework for the OCPI-compliant EMSP (E-Mobility
+Service Provider) backend, designed to simulate and validate bidirectional
+interactions with CPO (Charge Point Operator) systems.
 
 ## 🎯 Overview
 
@@ -15,7 +17,7 @@ This testing framework provides:
 
 ## 📁 Project Structure
 
-```
+```text
 tests/
 ├── __init__.py                 # Package initialization
 ├── conftest.py                 # Pytest configuration and fixtures
@@ -98,6 +100,7 @@ pytest tests/integration/test_command_flows.py
 ```
 
 **Coverage:**
+
 - Authentication and token exchange flows
 - Location discovery and synchronization
 - Session reporting and management
@@ -118,6 +121,7 @@ pytest tests/unit/test_authentication.py
 ```
 
 **Coverage:**
+
 - Authentication module validation
 - CRUD operations testing
 - Configuration management
@@ -137,6 +141,7 @@ pytest tests/compliance/ --html=compliance_report.html
 ```
 
 **Coverage:**
+
 - Response format compliance
 - Required field validation
 - Data type compliance
@@ -157,6 +162,7 @@ pytest -m benchmark
 ```
 
 **Coverage:**
+
 - Concurrent request handling
 - Load testing with multiple clients
 - Response time benchmarking
@@ -372,38 +378,42 @@ pipeline {
 ### Common Issues
 
 1. **Import Errors**
+
    ```bash
    # Make sure you're in the project root
    cd /path/to/evcharger
-   
+
    # Install dependencies
    pip install -r requirements.txt
    ```
 
 2. **Port Conflicts**
+
    ```bash
    # Check if ports 8000/8001 are in use
    lsof -i :8000
    lsof -i :8001
-   
+
    # Kill processes if needed
    kill -9 <PID>
    ```
 
 3. **Test Failures**
+
    ```bash
    # Run with verbose output
    pytest -v --tb=long
-   
+
    # Run specific failing test
    pytest tests/path/to/test.py::test_name -v
    ```
 
 4. **Performance Test Timeouts**
+
    ```bash
    # Increase timeout
    pytest --timeout=600 -m performance
-   
+
    # Skip slow tests
    pytest -m "not slow"
    ```

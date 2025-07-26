@@ -1,13 +1,20 @@
 # OCPI EMSP-CPO Educational Demo & Backend
 
-A comprehensive **E-Mobility Service Provider (EMSP)** backend implementation using the [extrawest_ocpi](https://github.com/extrawest/extrawest_ocpi) library and FastAPI, combined with an educational platform for learning OCPI (Open Charge Point Interface) 2.2.1. This project provides full OCPI 2.2.1 compliance, supports all required EMSP modules, and offers interactive demonstrations and a robust testing framework.
+A comprehensive **E-Mobility Service Provider (EMSP)** backend
+implementation using the [extrawest_ocpi](https://github.com/extrawest/extrawest_ocpi)
+library and FastAPI, combined with an educational platform for learning OCPI
+(Open Charge Point Interface) 2.2.1. This project provides full OCPI 2.2.1
+compliance, supports all required EMSP modules, and offers interactive
+demonstrations and a robust testing framework.
 
 ## 🚀 Main Project Features
 
 - **OCPI 2.2.1 Compliant**: Full implementation of OCPI protocol version 2.2.1
 - **EMSP Role**: Complete EMSP functionality for managing EV charging services
-- **All EMSP Modules**: Locations, Sessions, CDRs, Tariffs, Commands, Tokens, Hub Client Info, Charging Profiles
-- **Token Authentication**: OCPI-compliant token-based authentication (Token A & Token C)
+- **All EMSP Modules**: Locations, Sessions, CDRs, Tariffs, Commands, Tokens,
+  Hub Client Info, Charging Profiles
+- **Token Authentication**: OCPI-compliant token-based authentication
+  (Token A & Token C)
 - **Mock Data**: Built-in mock data for development and testing
 - **Production Ready**: Configurable for production deployment
 - **Real-time Updates**: HTTP push notifications support
@@ -16,6 +23,7 @@ A comprehensive **E-Mobility Service Provider (EMSP)** backend implementation us
 ### 📋 Supported OCPI Modules (EMSP Backend)
 
 #### Receiver Modules (EMSP receives data from CPO)
+
 - **Locations** - Charging station location information
 - **Sessions** - Charging session data
 - **CDRs** - Charge Detail Records
@@ -24,6 +32,7 @@ A comprehensive **E-Mobility Service Provider (EMSP)** backend implementation us
 - **Credentials** - Registration and credentials management
 
 #### Sender Modules (EMSP sends data to CPO)
+
 - **Commands** - Commands to charging stations (Start/Stop/Reserve/etc.)
 - **Tokens** - Token authorization requests
 - **Charging Profiles** - Smart charging profile management
@@ -31,21 +40,25 @@ A comprehensive **E-Mobility Service Provider (EMSP)** backend implementation us
 ### 🛠️ Installation (Main Project)
 
 #### Prerequisites
+
 - Python 3.10 or higher
 - pip or poetry for package management
 
 #### Quick Start
+
 1. **Clone the repository**:
+
    ```bash
    git clone <repository-url>
    cd evcharger
    ```
 
 2. **Install dependencies**:
+
    ```bash
    # Using pip
    pip install -r requirements.txt
-   
+
    # Or using the extrawest_ocpi library directly
    cd extrawest_ocpi
    pip install -e .
@@ -53,12 +66,14 @@ A comprehensive **E-Mobility Service Provider (EMSP)** backend implementation us
    ```
 
 3. **Set up environment variables** (optional):
+
    ```bash
    cp .env.example .env
    # Edit .env with your configuration
    ```
 
 4. **Run the application**:
+
    ```bash
    python core/main.py
    ```
@@ -68,6 +83,7 @@ The EMSP backend will be available at `http://localhost:8000`
 ### ⚙️ Configuration (Main Project)
 
 #### Environment Variables
+
 Create a `.env` file in the root directory:
 
 ```env
@@ -107,38 +123,46 @@ BACKEND_CORS_ORIGINS=http://localhost:3000,http://localhost:8080
 ### 🔗 API Endpoints (Main Project)
 
 #### Base URLs
+
 - **Application Root**: `http://localhost:8000/`
 - **OCPI Base**: `http://localhost:8000/ocpi/emsp/2.2.1/`
 - **API Documentation**: `http://localhost:8000/ocpi/emsp/2.2.1/docs`
 - **Health Check**: `http://localhost:8000/health`
 
 #### OCPI Endpoints
+
 ##### Version Information
+
 - `GET /ocpi/versions` - Get supported OCPI versions
 - `GET /ocpi/emsp/2.2.1/` - Get version details and endpoints
 
 ##### Locations Module
+
 - `GET /ocpi/emsp/2.2.1/locations` - List all locations
 - `GET /ocpi/emsp/2.2.1/locations/{country_code}/{party_id}/{location_id}` - Get specific location
 - `PUT /ocpi/emsp/2.2.1/locations/{country_code}/{party_id}/{location_id}` - Create/update location
 
 ##### Sessions Module
+
 - `GET /ocpi/emsp/2.2.1/sessions` - List all sessions
 - `GET /ocpi/emsp/2.2.1/sessions/{country_code}/{party_id}/{session_id}` - Get specific session
 - `PUT /ocpi/emsp/2.2.1/sessions/{country_code}/{party_id}/{session_id}` - Create/update session
 
 ##### CDRs Module
+
 - `GET /ocpi/emsp/2.2.1/cdrs` - List all CDRs
 - `GET /ocpi/emsp/2.2.1/cdrs/{cdr_id}` - Get specific CDR
 - `POST /ocpi/emsp/2.2.1/cdrs` - Create new CDR
 
 ##### Commands Module
+
 - `POST /ocpi/emsp/2.2.1/commands/START_SESSION` - Start charging session
 - `POST /ocpi/emsp/2.2.1/commands/STOP_SESSION` - Stop charging session
 - `POST /ocpi/emsp/2.2.1/commands/RESERVE_NOW` - Reserve charging point
 - `POST /ocpi/emsp/2.2.1/commands/CANCEL_RESERVATION` - Cancel reservation
 
 ##### Tokens Module
+
 - `GET /ocpi/emsp/2.2.1/tokens/{country_code}/{party_id}/{token_uid}` - Get token authorization
 - `POST /ocpi/emsp/2.2.1/tokens/{country_code}/{party_id}/{token_uid}/authorize` - Authorize token
 
@@ -147,17 +171,20 @@ BACKEND_CORS_ORIGINS=http://localhost:3000,http://localhost:8080
 The EMSP backend uses OCPI-compliant token-based authentication:
 
 #### Token Types
+
 - **Token A**: Used by EMSP to authenticate with CPO systems
 - **Token C**: Used by CPO systems to authenticate with EMSP
 
 #### Authentication Header
+
 Include the authentication token in the `Authorization` header:
 
-```
+```text
 Authorization: Token your_token_here
 ```
 
 #### Default Development Tokens
+
 For development and testing, the following tokens are pre-configured:
 
 **Token A (EMSP tokens)**:
@@ -172,23 +199,27 @@ For development and testing, the following tokens are pre-configured:
 ### 🧪 Testing (Main Project)
 
 #### Health Check
+
 ```bash
 curl http://localhost:8000/health
 ```
 
 #### Get OCPI Versions
+
 ```bash
 curl -H "Authorization: Token test_token_c_123" \
      http://localhost:8000/ocpi/versions
 ```
 
 #### List Locations
+
 ```bash
 curl -H "Authorization: Token test_token_c_123" \
      http://localhost:8000/ocpi/emsp/2.2.1/locations
 ```
 
 #### Start Charging Session
+
 ```bash
 curl -X POST \
      -H "Authorization: Token test_token_c_123" \
@@ -209,7 +240,8 @@ curl -X POST \
 ### 🏗️ Architecture (Main Project)
 
 #### Project Structure
-```
+
+```text
 evcharger/
 ├── core/                # Core application logic
 │   ├── main.py          # Application entry point
@@ -228,21 +260,28 @@ evcharger/
 ```
 
 #### Key Components
-1. **Main Application** (`core/main.py`): FastAPI application setup with OCPI configuration
-2. **CRUD Operations** (`core/crud.py`): Database operations for all EMSP modules
+
+1. **Main Application** (`core/main.py`): FastAPI application setup with
+   OCPI configuration
+2. **CRUD Operations** (`core/crud.py`): Database operations for all
+   EMSP modules
 3. **Authentication** (`core/auth.py`): OCPI token-based authentication
-4. **Configuration** (`core/config.py`): Environment-based configuration management
+4. **Configuration** (`core/config.py`): Environment-based configuration
+   management
 5. **Data Models** (`core/models.py`): Mock data and data structures
 
 ### 🔧 Development (Main Project)
 
 #### Adding New Features
-1. **Extend CRUD Operations**: Add new methods to `EMSPCrud` class in `core/crud.py`
+
+1. **Extend CRUD Operations**: Add new methods to `EMSPCrud` class in
+   `core/crud.py`
 2. **Update Authentication**: Modify token management in `core/auth.py`
 3. **Add Configuration**: Update settings in `core/config.py`
 4. **Mock Data**: Add test data in `core/models.py`
 
 #### Database Integration
+
 Replace the mock storage in `core/crud.py` with actual database operations:
 
 ```python
@@ -290,6 +329,7 @@ docker run -p 8000:8000 -e ENVIRONMENT=production emsp-backend
 For production deployment:
 
 1. **Set secure environment variables**:
+
    ```env
    ENVIRONMENT=production
    DEBUG=false
@@ -309,36 +349,47 @@ For production deployment:
 ### Common Issues
 
 #### 1. Import Errors
-```
+
+```text
 ImportError: No module named 'py_ocpi'
 ```
+
 **Solution**: Install the extrawest_ocpi library:
+
 ```bash
 cd extrawest_ocpi
 pip install -e .
 ```
 
 #### 2. Authentication Failures
-```
+
+```text
 {"status_code": 2001, "status_message": "Invalid or missing token"}
 ```
+
 **Solution**: Check your authorization header and token validity:
+
 ```bash
 # Verify token format
 curl -H "Authorization: Token your_token_here" ...
 ```
 
 #### 3. CORS Issues
-```
+
+```text
 Access to fetch at 'http://localhost:8000' from origin 'http://localhost:3000' has been blocked by CORS policy
 ```
+
 **Solution**: Add your frontend URL to `BACKEND_CORS_ORIGINS` in config.
 
 #### 4. Port Already in Use
-```
+
+```text
 OSError: [Errno 48] Address already in use
 ```
+
 **Solution**: Change the port or kill the existing process:
+
 ```bash
 # Change port
 python core/main.py --port 8001
@@ -350,6 +401,7 @@ lsof -ti:8000 | xargs kill -9
 ### Debug Mode
 
 Enable debug logging by setting:
+
 ```env
 DEBUG=true
 LOG_LEVEL=DEBUG
@@ -358,6 +410,7 @@ LOG_LEVEL=DEBUG
 ### Health Checks
 
 Monitor the service health:
+
 ```bash
 # Basic health check
 curl http://localhost:8000/health
@@ -369,7 +422,8 @@ curl -H "Authorization: Token test_token_c_123" \
 
 ## 📚 OCPI Compliance (Main Project)
 
-This implementation follows the [OCPI 2.2.1 specification](https://github.com/ocpi/ocpi/tree/2.2.1) and includes:
+This implementation follows the [OCPI 2.2.1 specification](https://github.com/ocpi/ocpi/tree/2.2.1)
+and includes:
 
 - ✅ **Version Information Endpoint**: `/ocpi/versions`
 - ✅ **Credentials Module**: Registration and token management
@@ -385,17 +439,20 @@ This implementation follows the [OCPI 2.2.1 specification](https://github.com/oc
 ### OCPI Flow Examples
 
 #### 1. CPO Registration Flow
+
 1. CPO calls `POST /ocpi/emsp/2.2.1/credentials` with Token A
 2. EMSP validates and stores CPO credentials
 3. EMSP returns Token C for future authentication
 4. CPO uses Token C for subsequent requests
 
 #### 2. Token Authorization Flow
+
 1. CPO sends `POST /ocpi/emsp/2.2.1/tokens/{token_uid}/authorize`
 2. EMSP validates token and returns authorization status
 3. CPO uses authorization result to allow/deny charging
 
 #### 3. Session Management Flow
+
 1. CPO sends session start: `PUT /ocpi/emsp/2.2.1/sessions/{session_id}`
 2. EMSP stores session information
 3. CPO sends session updates during charging
@@ -432,26 +489,32 @@ For support and questions:
 
 ---
 
-# 🚗⚡ OCPI EMSP-CPO Educational Demo Environment
+## 🚗⚡ OCPI EMSP-CPO Educational Demo Environment
 
-A comprehensive educational platform for learning OCPI (Open Charge Point Interface) 2.2.1 through practical demonstrations and interactive testing.
+A comprehensive educational platform for learning OCPI (Open Charge Point
+Interface) 2.2.1 through practical demonstrations and interactive testing.
 
-## 🎯 What is OCPI?
+### 🎯 What is OCPI?
 
-OCPI (Open Charge Point Interface) is a protocol that enables communication between different actors in the EV charging ecosystem:
+OCPI (Open Charge Point Interface) is a protocol that enables communication
+between different actors in the EV charging ecosystem:
 
-- **EMSP** (E-Mobility Service Provider): Charging apps and services that EV drivers use
-- **CPO** (Charge Point Operator): Companies that own and operate charging stations
-- **MSP** (Mobility Service Provider): Roaming services that connect EMSPs and CPOs
+- **EMSP** (E-Mobility Service Provider): Charging apps and services that EV
+  drivers use
+- **CPO** (Charge Point Operator): Companies that own and operate charging
+  stations
+- **MSP** (Mobility Service Provider): Roaming services that connect EMSPs and
+  CPOs
 
-This project demonstrates how these systems communicate to provide seamless charging experiences.
+This project demonstrates how these systems communicate to provide seamless
+charging experiences.
 
-## 🏗️ Architecture (Educational Demo)
+### 🏗️ Architecture (Educational Demo)
 
-```
+```text
 📱 EMSP Backend (Port 8000)     🔌 Mock CPO Server (Port 8001)
 ├─ Authentication & Tokens      ├─ Location Management
-├─ Session Management           ├─ Token Authorization  
+├─ Session Management           ├─ Token Authorization
 ├─ CDR Processing              ├─ Session Monitoring
 ├─ Command Handling            ├─ Command Execution
 └─ Location Discovery          └─ Billing Integration
@@ -459,9 +522,10 @@ This project demonstrates how these systems communicate to provide seamless char
             └─── OCPI 2.2.1 Protocol ───┘
 ```
 
-## 🚀 Quick Start (Educational Demo)
+### 🚀 Quick Start (Educational Demo)
 
-### 1. Install Dependencies
+#### 1. Install Dependencies
+
 ```bash
 # Using pipenv (recommended)
 pipenv install
@@ -470,7 +534,8 @@ pipenv install
 pip install -r requirements.txt
 ```
 
-### 2. Start the Educational Demo
+#### 2. Start the Educational Demo
+
 ```bash
 # Interactive menu system
 python educational/ocpi_menu.py
@@ -479,7 +544,8 @@ python educational/ocpi_menu.py
 python educational/start_ocpi_demo.py
 ```
 
-### 3. Explore OCPI Concepts
+#### 3. Explore OCPI Concepts
+
 ```bash
 # Interactive educational demos
 python educational/ocpi_educational_demo.py interactive
@@ -490,7 +556,8 @@ python educational/ocpi_educational_demo.py locations
 python educational/ocpi_educational_demo.py sessions
 ```
 
-### 4. Run Tests
+#### 4. Run Tests
+
 ```bash
 # All tests
 python testing/run_tests.py
@@ -501,86 +568,92 @@ python testing/run_tests.py integration
 python testing/run_tests.py compliance
 ```
 
-## 🎓 Educational Features
+### 🎓 Educational Features
 
-### Interactive Learning
+#### Interactive Learning
+
 - **Step-by-step demos** with detailed explanations
 - **Real OCPI message flows** with educational commentary
 - **Interactive menu system** for guided exploration
 - **Troubleshooting guides** for common issues
 
-### Key OCPI Concepts Covered
+#### Key OCPI Concepts Covered
+
 1. **Authentication & Credential Exchange** - How systems establish trust
 2. **Location Discovery** - How EMSPs find charging stations
 3. **Token Authorization** - How users get validated for charging
 4. **Session Management** - How charging sessions are controlled
 5. **CDR Processing** - How billing information is exchanged
 
-### Testing Framework (Educational Demo)
+#### Testing Framework (Educational Demo)
+
 - **Unit Tests** - Individual component validation
 - **Integration Tests** - End-to-end EMSP-CPO interactions
 - **Compliance Tests** - OCPI 2.2.1 specification adherence
 - **Performance Tests** - Load testing and scalability validation
 
-## 📚 Available Scripts (Educational Demo)
+### 📚 Available Scripts (Educational Demo)
 
 | Script | Purpose | Usage |
 |--------|---------|-------|
-| `educational/ocpi_menu.py` | Interactive menu system | `python educational/ocpi_menu.py` |
-| `educational/start_ocpi_demo.py` | Start EMSP/CPO services | `python educational/start_ocpi_demo.py` |
-| `educational/ocpi_educational_demo.py` | Educational demonstrations | `python educational/ocpi_educational_demo.py interactive` |
-| `testing/run_tests.py` | Test execution | `python testing/run_tests.py [test_type]` |
-| `testing/test_framework_validation.py` | Framework validation | `python testing/test_framework_validation.py` |
+| `ocpi_menu.py` | Interactive menu system | `python ocpi_menu.py` |
+| `start_ocpi_demo.py` | Start EMSP/CPO services | `python start_ocpi_demo.py` |
+| `ocpi_educational_demo.py` | Educational demonstrations | `python ocpi_educational_demo.py interactive` |
+| `run_tests.py` | Test execution | `python run_tests.py [test_type]` |
+| `test_framework_validation.py` | Framework validation | `python test_framework_validation.py` |
 
-## 🌐 API Documentation (Educational Demo)
+### 🌐 API Documentation (Educational Demo)
 
 Once services are running:
 
-- **EMSP Backend**: http://localhost:8000/docs
-- **Mock CPO Server**: http://localhost:8001/docs
-- **OCPI Endpoints**: 
-  - EMSP: http://localhost:8000/ocpi/emsp/2.2.1/versions
-  - CPO: http://localhost:8001/ocpi/cpo/2.2.1/versions
+- **EMSP Backend**: [http://localhost:8000/docs](http://localhost:8000/docs)
+- **Mock CPO Server**: [http://localhost:8001/docs](http://localhost:8001/docs)
+- **OCPI Endpoints**:
+  - EMSP: [http://localhost:8000/ocpi/emsp/2.2.1/versions](http://localhost:8000/ocpi/emsp/2.2.1/versions)
+  - CPO: [http://localhost:8001/ocpi/cpo/2.2.1/versions](http://localhost:8001/ocpi/cpo/2.2.1/versions)
 
-## 🧪 Testing (Educational Demo)
+### 🧪 Testing (Educational Demo)
 
-### Test Categories
+#### Test Categories
 
 ```bash
 # Unit tests (individual components)
-python testing/run_tests.py unit
+python run_tests.py unit
 
-# Integration tests (EMSP-CPO interactions)  
-python testing/run_tests.py integration
+# Integration tests (EMSP-CPO interactions)
+python run_tests.py integration
 
 # Compliance tests (OCPI 2.2.1 specification)
-python testing/run_tests.py compliance
+python run_tests.py compliance
 
 # Performance tests (load and scalability)
-python testing/run_tests.py performance
+python run_tests.py performance
 
 # Quick test suite (unit + integration)
-python testing/run_tests.py quick
+python run_tests.py quick
 ```
 
-### Test Reports
+#### Test Reports
 
 After running tests, reports are generated in `testing/tests/reports/`:
 - **HTML Report**: `testing/tests/reports/report.html`
 - **Coverage Report**: `testing/tests/reports/coverage/index.html`
 - **JUnit XML**: `testing/tests/reports/junit.xml` (for CI/CD)
 
-## 🔧 Configuration (Educational Demo)
+### 🔧 Configuration (Educational Demo)
 
-### Authentication Tokens
+#### Authentication Tokens
+
 - **EMSP Token A**: `emsp_token_a_12345`
 - **CPO Token C**: `cpo_token_c_abcdef`
 
-### Service Ports
+#### Service Ports
+
 - **EMSP Backend**: 8000
 - **Mock CPO Server**: 8001
 
-### Environment Variables
+#### Environment Variables
+
 ```bash
 PROJECT_NAME="OCPI EMSP Backend"
 OCPI_HOST="http://localhost:8000"
@@ -588,60 +661,66 @@ COUNTRY_CODE="US"
 PARTY_ID="EMS"
 ```
 
-## 🔍 Troubleshooting (Educational Demo)
+### 🔍 Troubleshooting (Educational Demo)
 
-### Common Issues
+#### Common Issues
 
 1. **Services won't start**:
+
    ```bash
    # Check if ports are in use
    lsof -i :8000
    lsof -i :8001
-   
+
    # Kill existing processes
    kill -9 <PID>
    ```
 
 2. **Import errors**:
+
    ```bash
    # Install dependencies
    pipenv install
-   
+
    # Validate framework
-   python testing/test_framework_validation.py
+   python test_framework_validation.py
    ```
 
 3. **Test failures**:
+
    ```bash
    # Check service status
-   python educational/ocpi_menu.py
-   
+   python ocpi_menu.py
+
    # Run specific tests
-   python testing/run_tests.py unit -v
+   python run_tests.py unit -v
    ```
 
-### Getting Help
+#### Getting Help
 
-- **Check logs**: `tail -f utilities/ocpi_demo.log`
-- **Validate setup**: `python testing/test_framework_validation.py`
+- **Check logs**: `tail -f ocpi_demo.log`
+- **Validate setup**: `python test_framework_validation.py`
 - **View reports**: Open `testing/tests/reports/report.html`
-- **Interactive help**: `python educational/ocpi_menu.py`
+- **Interactive help**: `python ocpi_menu.py`
 
-## 📖 Learning Resources (Educational Demo)
+### 📖 Learning Resources (Educational Demo)
 
-### Official OCPI Resources
+#### Official OCPI Resources
+
 - [OCPI 2.2.1 Specification](https://evroaming.org/)
 - [OCPI GitHub](https://github.com/ocpi/ocpi)
 - [EVRoaming Foundation](https://evroaming.org/)
 
-### Key OCPI Concepts
+#### Key OCPI Concepts
+
 - **EMSP**: E-Mobility Service Provider (charging apps/services)
 - **CPO**: Charge Point Operator (charging station operators)
 - **Token**: User authentication credential (RFID, app)
 - **CDR**: Charge Detail Record (billing information)
 - **Location**: Charging station with EVSEs and connectors
 
-### OCPI Message Flow
+#### OCPI Message Flow
+
 1. **Credential Exchange** (establish trust)
 2. **Location Discovery** (find charging stations)
 3. **Token Authorization** (validate users)
@@ -652,29 +731,34 @@ PARTY_ID="EMS"
 
 After completing the educational demos, you should understand:
 
-✅ **OCPI Protocol Fundamentals**
+### OCPI Protocol Fundamentals
+
 - How EMSP and CPO systems communicate
 - Token-based authentication mechanisms
 - OCPI 2.2.1 message structures
 
-✅ **EV Charging Ecosystem**
+### EV Charging Ecosystem
+
 - Roles of different actors (EMSP, CPO, MSP)
 - Real-world charging workflows
 - Business relationships and data flows
 
-✅ **Technical Implementation**
+### Technical Implementation
+
 - REST API design patterns
 - Authentication and authorization
 - Real-time communication patterns
 
-✅ **Testing and Validation**
+### Testing and Validation
+
 - How to test OCPI implementations
 - Compliance validation techniques
 - Performance testing approaches
 
 ## 🤝 Contributing (Educational Demo)
 
-This educational platform is designed to help newcomers understand OCPI. Contributions that improve the learning experience are welcome:
+This educational platform is designed to help newcomers understand OCPI.
+Contributions that improve the learning experience are welcome:
 
 1. **Educational Content**: Add more demos or explanations
 2. **Test Coverage**: Expand test scenarios
@@ -683,13 +767,8 @@ This educational platform is designed to help newcomers understand OCPI. Contrib
 
 ## 📄 License (Educational Demo)
 
-This educational project is provided under the MIT License to encourage learning and experimentation in the EV charging ecosystem.
-
----
-
-**Happy Learning! 🚗⚡**
-
-Start your OCPI journey with: `python educational/ocpi_menu.py`
+This educational project is provided under the MIT License to encourage learning and
+experimentation in the EV charging ecosystem.
 
 ---
 
@@ -1070,7 +1149,7 @@ pipeline {
    ```bash
    # Make sure you're in the project root
    cd /path/to/evcharger
-   
+
    # Install dependencies
    pip install -r requirements.txt
    ```
@@ -1080,7 +1159,7 @@ pipeline {
    # Check if ports 8000/8001 are in use
    lsof -i :8000
    lsof -i :8001
-   
+
    # Kill processes if needed
    kill -9 <PID>
    ```
@@ -1089,7 +1168,7 @@ pipeline {
    ```bash
    # Run with verbose output
    pytest -v --tb=long
-   
+
    # Run specific failing test
    pytest testing/tests/path/to/test.py::test_name -v
    ```
@@ -1098,7 +1177,7 @@ pipeline {
    ```bash
    # Increase timeout
    pytest --timeout=600 -m performance
-   
+
    # Skip slow tests
    pytest -m "not slow"
    ```
