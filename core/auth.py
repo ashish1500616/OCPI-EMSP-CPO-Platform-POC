@@ -50,7 +50,7 @@ class ClientAuthenticator(Authenticator):
         "cpo_token_c_abcdef",
         "cpo_token_c_ghijkl",
         "cpo_development_token_c",  # For local development and testing
-        "test_token_c_123",         # Used specifically in integration tests
+        "test_token_c_123",  # Used specifically in integration tests
     ]
 
     @classmethod

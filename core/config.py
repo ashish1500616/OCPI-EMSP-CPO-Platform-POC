@@ -15,7 +15,6 @@ Configuration includes:
 - Logging configuration
 """
 
-import os
 from typing import List, Optional
 
 try:

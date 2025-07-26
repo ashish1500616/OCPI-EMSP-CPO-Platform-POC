@@ -15,14 +15,15 @@ The mock data includes:
 """
 
 import uuid
-from datetime import datetime, timezone, timedelta
-from typing import Dict, List, Any
-from dataclasses import dataclass, asdict
+from dataclasses import asdict, dataclass
+from datetime import datetime, timedelta, timezone
+from typing import Any, Dict, List
 
 
 @dataclass
 class MockLocation:
     """Mock location data structure."""
+
     id: str
     type: str
     name: str
@@ -40,6 +41,7 @@ class MockLocation:
 @dataclass
 class MockSession:
     """Mock charging session data structure."""
+
     id: str
     start_date_time: str
     end_date_time: str
@@ -59,6 +61,7 @@ class MockSession:
 @dataclass
 class MockCDR:
     """Mock Charge Detail Record data structure."""
+
     id: str
     start_date_time: str
     end_date_time: str
@@ -77,7 +80,7 @@ class MockCDR:
 
 class MockDataGenerator:
     """Generator for mock OCPI data."""
-    
+
     @staticmethod
     def generate_locations() -> List[Dict[str, Any]]:
         """Generate mock location data."""
@@ -94,7 +97,7 @@ class MockDataGenerator:
                 party_id="CPO",
                 country_code="US",
                 publish=True,
-                last_updated=datetime.now(timezone.utc).isoformat()
+                last_updated=datetime.now(timezone.utc).isoformat(),
             ),
             MockLocation(
                 id="LOC002",
@@ -108,7 +111,7 @@ class MockDataGenerator:
                 party_id="CPO",
                 country_code="US",
                 publish=True,
-                last_updated=datetime.now(timezone.utc).isoformat()
+                last_updated=datetime.now(timezone.utc).isoformat(),
             ),
             MockLocation(
                 id="LOC003",
@@ -122,11 +125,11 @@ class MockDataGenerator:
                 party_id="CPO",
                 country_code="US",
                 publish=True,
-                last_updated=datetime.now(timezone.utc).isoformat()
-            )
+                last_updated=datetime.now(timezone.utc).isoformat(),
+            ),
         ]
         return [asdict(loc) for loc in locations]
-    
+
     @staticmethod
     def generate_sessions() -> List[Dict[str, Any]]:
         """Generate mock session data."""
@@ -146,7 +149,7 @@ class MockDataGenerator:
                 meter_id="METER001",
                 currency="USD",
                 status="COMPLETED",
-                last_updated=now.isoformat()
+                last_updated=now.isoformat(),
             ),
             MockSession(
                 id="SES002",
@@ -162,11 +165,11 @@ class MockDataGenerator:
                 meter_id="METER002",
                 currency="USD",
                 status="COMPLETED",
-                last_updated=now.isoformat()
-            )
+                last_updated=now.isoformat(),
+            ),
         ]
         return [asdict(session) for session in sessions]
-    
+
     @staticmethod
     def generate_cdrs() -> List[Dict[str, Any]]:
         """Generate mock CDR data."""
@@ -180,21 +183,17 @@ class MockDataGenerator:
                 cdr_token={"uid": "TOKEN123", "type": "RFID"},
                 auth_method="AUTH_REQUEST",
                 authorization_reference="AUTH001",
-                cdr_location={
-                    "id": "LOC001",
-                    "name": "Downtown Charging Station",
-                    "address": "123 Main Street"
-                },
+                cdr_location={"id": "LOC001", "name": "Downtown Charging Station", "address": "123 Main Street"},
                 meter_id="METER001",
                 currency="USD",
                 total_cost={"excl_vat": 12.75, "incl_vat": 14.03},
                 total_energy=25.5,
                 total_time=1.0,
-                last_updated=now.isoformat()
+                last_updated=now.isoformat(),
             )
         ]
         return [asdict(cdr) for cdr in cdrs]
-    
+
     @staticmethod
     def generate_tariffs() -> List[Dict[str, Any]]:
         """Generate mock tariff data."""
@@ -203,37 +202,21 @@ class MockDataGenerator:
                 "id": "TARIFF001",
                 "currency": "USD",
                 "type": "REGULAR",
-                "tariff_alt_text": [
-                    {"language": "en", "text": "Standard charging rate"}
-                ],
+                "tariff_alt_text": [{"language": "en", "text": "Standard charging rate"}],
                 "tariff_alt_url": "https://example.com/tariff/001",
                 "min_price": {"excl_vat": 0.50, "incl_vat": 0.55},
                 "max_price": {"excl_vat": 0.75, "incl_vat": 0.83},
-                "elements": [
-                    {
-                        "price_components": [
-                            {
-                                "type": "ENERGY",
-                                "price": 0.30,
-                                "vat": 10.0,
-                                "step_size": 1
-                            }
-                        ]
-                    }
-                ],
+                "elements": [{"price_components": [{"type": "ENERGY", "price": 0.30, "vat": 10.0, "step_size": 1}]}],
                 "start_date_time": datetime.now(timezone.utc).isoformat(),
                 "end_date_time": (datetime.now(timezone.utc) + timedelta(days=365)).isoformat(),
                 "energy_mix": {
                     "is_green_energy": True,
-                    "energy_sources": [
-                        {"source": "SOLAR", "percentage": 60.0},
-                        {"source": "WIND", "percentage": 40.0}
-                    ]
+                    "energy_sources": [{"source": "SOLAR", "percentage": 60.0}, {"source": "WIND", "percentage": 40.0}],
                 },
-                "last_updated": datetime.now(timezone.utc).isoformat()
+                "last_updated": datetime.now(timezone.utc).isoformat(),
             }
         ]
-    
+
     @staticmethod
     def generate_tokens() -> List[Dict[str, Any]]:
         """Generate mock token data."""
@@ -249,11 +232,8 @@ class MockDataGenerator:
                 "whitelist": "ALWAYS",
                 "language": "en",
                 "default_profile_type": "REGULAR",
-                "energy_contract": {
-                    "supplier_name": "Green Energy Co",
-                    "contract_id": "CONTRACT123"
-                },
-                "last_updated": datetime.now(timezone.utc).isoformat()
+                "energy_contract": {"supplier_name": "Green Energy Co", "contract_id": "CONTRACT123"},
+                "last_updated": datetime.now(timezone.utc).isoformat(),
             },
             {
                 "uid": "TOKEN456",
@@ -266,12 +246,9 @@ class MockDataGenerator:
                 "whitelist": "ALWAYS",
                 "language": "en",
                 "default_profile_type": "REGULAR",
-                "energy_contract": {
-                    "supplier_name": "Clean Power Inc",
-                    "contract_id": "CONTRACT456"
-                },
-                "last_updated": datetime.now(timezone.utc).isoformat()
-            }
+                "energy_contract": {"supplier_name": "Clean Power Inc", "contract_id": "CONTRACT456"},
+                "last_updated": datetime.now(timezone.utc).isoformat(),
+            },
         ]
 
 
@@ -285,17 +262,17 @@ MOCK_DATA = {
     "commands": [],
     "hub_client_info": [],
     "charging_profiles": [],
-    "credentials": []
+    "credentials": [],
 }
 
 
 def get_mock_data(module: str) -> List[Dict[str, Any]]:
     """
     Get mock data for a specific module.
-    
+
     Args:
         module: The module name
-        
+
     Returns:
         List of mock data objects
     """
@@ -305,7 +282,7 @@ def get_mock_data(module: str) -> List[Dict[str, Any]]:
 def populate_storage_with_mock_data(storage: Dict[str, Dict[str, Any]]) -> None:
     """
     Populate storage with mock data.
-    
+
     Args:
         storage: The storage dictionary to populate
     """

@@ -6,10 +6,9 @@ Tests for the EMSP authentication implementation, including token validation,
 authentication flows, and security features.
 """
 
-from unittest.mock import AsyncMock, patch
+from unittest.mock import patch
 
 import pytest
-
 from auth import ClientAuthenticator
 
 
@@ -210,9 +209,7 @@ class TestClientAuthenticator:
         assert len(debug_calls) >= 1
 
         # Check that at least one call contains the validation success message
-        validation_calls = [
-            call for call in debug_calls if "Token validation successful" in str(call)
-        ]
+        validation_calls = [call for call in debug_calls if "Token validation successful" in str(call)]
         assert len(validation_calls) >= 1
 
     @patch("auth.logger")

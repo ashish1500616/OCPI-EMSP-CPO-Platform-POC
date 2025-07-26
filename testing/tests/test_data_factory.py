@@ -182,9 +182,7 @@ class TestDataFactory:
         defaults.update(kwargs)
         return defaults
 
-    def create_command(
-        self, command_type: str = "START_SESSION", **kwargs
-    ) -> Dict[str, Any]:
+    def create_command(self, command_type: str = "START_SESSION", **kwargs) -> Dict[str, Any]:
         """Create a test Command object."""
         defaults = {
             "response_url": "https://emsp.example.com/ocpi/emsp/2.2.1/commands/START_SESSION/123",
@@ -210,9 +208,7 @@ class TestDataFactory:
         defaults.update(kwargs)
         return defaults
 
-    def create_command_response(
-        self, result: str = "ACCEPTED", **kwargs
-    ) -> Dict[str, Any]:
+    def create_command_response(self, result: str = "ACCEPTED", **kwargs) -> Dict[str, Any]:
         """Create a test Command Response object."""
         defaults = {"result": result, "timeout": 30, "message": []}
         defaults.update(kwargs)

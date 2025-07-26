@@ -21,7 +21,6 @@ from typing import Any, Dict, List, Optional, Tuple
 from py_ocpi.core.crud import Crud
 from py_ocpi.core.enums import Action, ModuleID, RoleEnum
 from py_ocpi.core.exceptions import NotFoundOCPIError
-from py_ocpi.modules.versions.enums import VersionNumber
 
 # Configure logging
 logger = logging.getLogger(__name__)
@@ -50,9 +49,7 @@ class EMSPCrud(Crud):
     }
 
     @classmethod
-    async def get(
-        cls, module: ModuleID, role: RoleEnum, id: str, *args, **kwargs
-    ) -> Any:
+    async def get(cls, module: ModuleID, role: RoleEnum, id: str, *args, **kwargs) -> Any:
         """
         Get a single object by ID.
 
@@ -119,9 +116,7 @@ class EMSPCrud(Crud):
         return objects_list, total_count, is_last_page
 
     @classmethod
-    async def create(
-        cls, module: ModuleID, role: RoleEnum, data: dict, *args, **kwargs
-    ) -> Any:
+    async def create(cls, module: ModuleID, role: RoleEnum, data: dict, *args, **kwargs) -> Any:
         """
         Create a new object.
 
@@ -198,9 +193,7 @@ class EMSPCrud(Crud):
         return existing_data
 
     @classmethod
-    async def delete(
-        cls, module: ModuleID, role: RoleEnum, id: str, *args, **kwargs
-    ) -> None:
+    async def delete(cls, module: ModuleID, role: RoleEnum, id: str, *args, **kwargs) -> None:
         """
         Delete an object.
 
@@ -218,9 +211,7 @@ class EMSPCrud(Crud):
         storage_key = cls._get_storage_key(module)
 
         if id not in cls._storage[storage_key]:
-            logger.warning(
-                f"Object not found for deletion: {module.value} with id {id}"
-            )
+            logger.warning(f"Object not found for deletion: {module.value} with id {id}")
             raise NotFoundOCPIError
 
         del cls._storage[storage_key][id]

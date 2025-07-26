@@ -14,39 +14,37 @@ Features:
 """
 
 import uvicorn
+from auth import ClientAuthenticator
+from config import settings
+from crud import EMSPCrud
 from fastapi import FastAPI
 from py_ocpi import get_application
-from py_ocpi.core.enums import RoleEnum, ModuleID
+from py_ocpi.core.enums import ModuleID, RoleEnum
 from py_ocpi.modules.versions.enums import VersionNumber
-
-from auth import ClientAuthenticator
-from crud import EMSPCrud
-from config import settings
 
 
 def create_emsp_application() -> FastAPI:
     """
     Create and configure the EMSP FastAPI application.
-    
+
     Returns:
         FastAPI: Configured EMSP application
     """
     # Define all EMSP modules according to OCPI 2.2.1 specification
     emsp_modules = [
         # Receiver modules (EMSP receives data from CPO)
-        ModuleID.locations,              # Location information from CPOs
-        ModuleID.sessions,               # Charging session information
-        ModuleID.cdrs,                   # Charge Detail Records
-        ModuleID.tariffs,                # Tariff information
-        ModuleID.hub_client_info,        # Hub client information
+        ModuleID.locations,  # Location information from CPOs
+        ModuleID.sessions,  # Charging session information
+        ModuleID.cdrs,  # Charge Detail Records
+        ModuleID.tariffs,  # Tariff information
+        ModuleID.hub_client_info,  # Hub client information
         ModuleID.credentials_and_registration,  # Credentials and registration
-
         # Sender modules (EMSP sends data to CPO)
-        ModuleID.commands,               # Commands to charging stations
-        ModuleID.tokens,                 # Token authorization
-        ModuleID.charging_profile,       # Charging profile management
+        ModuleID.commands,  # Commands to charging stations
+        ModuleID.tokens,  # Token authorization
+        ModuleID.charging_profile,  # Charging profile management
     ]
-    
+
     # Create the OCPI application
     ocpi_app = get_application(
         version_numbers=[VersionNumber.v_2_2_1],
@@ -86,11 +84,7 @@ def create_emsp_application() -> FastAPI:
 
     @app.get("/health")
     async def health_check():
-        return {
-            "status": "healthy",
-            "service": "EMSP Backend",
-            "version": settings.VERSION
-        }
+        return {"status": "healthy", "service": "EMSP Backend", "version": settings.VERSION}
 
     return app
 
