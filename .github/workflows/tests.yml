@@ -37,15 +37,15 @@ jobs:
 
     - name: Run unit tests
       run: |
-        python run_tests.py unit --no-html
+        python testing/run_tests.py unit --no-html
 
     - name: Run integration tests
       run: |
-        python run_tests.py integration --no-html
+        python testing/run_tests.py integration --no-html
 
     - name: Run compliance tests
       run: |
-        python run_tests.py compliance --no-html
+        python testing/run_tests.py compliance --no-html
 
     - name: Upload coverage to Codecov
       uses: codecov/codecov-action@v3
@@ -67,7 +67,7 @@ jobs:
   performance:
     runs-on: ubuntu-latest
     needs: test
-    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    if: github.event_name == 'push' && (github.ref == 'refs/heads/main' || github.ref == 'refs/heads/develop')
 
     steps:
     - name: Checkout code
@@ -85,7 +85,7 @@ jobs:
 
     - name: Run performance tests
       run: |
-        python run_tests.py performance --no-html
+        python testing/run_tests.py performance --no-html
 
     - name: Upload performance results
       uses: actions/upload-artifact@v3

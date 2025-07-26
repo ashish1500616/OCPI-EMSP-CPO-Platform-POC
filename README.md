@@ -480,12 +480,11 @@ and includes:
 
 ## 🤝 Contributing (Main Project)
 
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/new-feature`
-3. Make your changes and add tests
-4. Commit your changes: `git commit -am 'Add new feature'`
-5. Push to the branch: `git push origin feature/new-feature`
-6. Submit a pull request
+We welcome contributions from the community! Please read our [Contributing Guidelines](CONTRIBUTING.md) to get started.
+
+## ⚖️ Code of Conduct
+
+Everyone participating in this project is expected to abide by our [Code of Conduct](CODE_OF_CONDUCT.md). Please read it to understand the standards of behavior we expect.
 
 ## 📄 License (Main Project)
 
