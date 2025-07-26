@@ -1,0 +1,16 @@
+anyio==4.9.0
+certifi==2025.7.14
+click==8.2.1
+exceptiongroup==1.3.0
+extrawest_ocpi==2025.7.16
+fastapi==0.101.1
+h11==0.14.0
+httpcore==0.17.3
+httpx==0.24.1
+idna==3.10
+pydantic==1.10.12
+python-dotenv==1.1.1
+sniffio==1.3.1
+starlette==0.27.0
+typing_extensions==4.14.1
+uvicorn==0.35.0

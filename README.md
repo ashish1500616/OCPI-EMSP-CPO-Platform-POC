@@ -57,42 +57,35 @@ This repository is primarily an **educational and development project** designed
 
 #### Prerequisites
 
-- Python 3.10 or higher
-- pip or poetry for package management
+- **Python 3.11**: This project is configured to use Python 3.11, as specified in the `.python-version` file. The `start.sh` script will automatically create a virtual environment using `python3.11`. Please ensure you have Python 3.11 installed on your system.
 
 #### Quick Start
 
-1. **Clone the repository**:
+1.  **Clone the repository**:
 
-   ```bash
-   git clone <repository-url>
-   cd evcharger
-   ```
+    ```bash
+    git clone <repository-url>
+    cd evcharger
+    ```
 
-2. **Install dependencies**:
+2.  **Run the startup script**:
 
-   ```bash
-   # Using pip
-   pip install -r requirements.txt
+    ```bash
+    ./start.sh
+    ```
 
-   # Or using the extrawest_ocpi library directly
-   cd extrawest_ocpi
-   pip install -e .
-   cd ..
-   ```
+    The script will automatically:
+    - Create a virtual environment (`venv`) if it doesn't exist.
+    - Activate the virtual environment.
+    - Install the required dependencies from `requirements.txt`.
+    - Start the application.
 
-3. **Set up environment variables** (optional):
+3.  **Set up environment variables** (optional):
 
-   ```bash
-   cp .env.example .env
-   # Edit .env with your configuration
-   ```
-
-4. **Run the application**:
-
-   ```bash
-   python core/main.py
-   ```
+    ```bash
+    cp .env.example .env
+    # Edit .env with your configuration
+    ```
 
 The EMSP backend will be available at `http://localhost:8000`
 
