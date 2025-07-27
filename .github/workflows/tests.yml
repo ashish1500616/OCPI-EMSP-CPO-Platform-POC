@@ -34,7 +34,9 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -r requirements.txt
+        pip --version
+        cat requirements.txt
+        pip install -r requirements.txt -v
 
     - name: Run unit tests
       run: |
@@ -82,7 +84,9 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -r requirements.txt
+        pip --version
+        cat requirements.txt
+        pip install -r requirements.txt -v
 
     - name: Run performance tests
       run: |
@@ -110,8 +114,10 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -r requirements.txt
-        pip install bandit safety
+        pip --version
+        cat requirements.txt
+        pip install -r requirements.txt -v
+        pip install bandit safety -v
 
     - name: Run security checks with bandit
       run: |
